@@ -1,0 +1,242 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{hyperref}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "Just for fun"
+\pdf_author "Josué"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Part*
+Just for fun
+\end_layout
+
+\begin_layout Section*
+
+\family typewriter
+transport_equation
+\end_layout
+
+\begin_layout Standard
+Equation 
+\begin_inset Formula $\phi_{t}\left(x,t\right)+\theta\left(x\right)\cdot\nabla_{x}\phi\left(x,t\right)=f\left(x,t\right)$
+\end_inset
+
+.
+ Applying Backward Euler method,
+\begin_inset Formula 
+\[
+\frac{\phi\left(x,t+\delta t\right)-\phi\left(x,t\right)}{\delta t}+\theta\left(x\right)\cdot\nabla_{x}\phi\left(x,t+\delta t\right)=f\left(x,t+\delta t\right).
+\]
+
+\end_inset
+
+The weak formulation reads
+\begin_inset Formula 
+\[
+\int_{\Omega}\phi\left(x,t+\delta t\right)\psi\left(x\right)+\delta t\theta\left(x\right)\cdot\nabla_{x}\phi\left(x,t+\delta t\right)\psi\left(x\right)\mathrm{d}x=\int_{\Omega}\left(\phi\left(x,t\right)+\delta tf\left(x,t+\delta t\right)\right)\psi\left(x\right)\mathrm{d}x
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\family typewriter
+modified_transport_eq
+\end_layout
+
+\begin_layout Standard
+Equation 
+\begin_inset Formula $u_{t}+V\cdot\nabla u=f$
+\end_inset
+
+.
+ Change of variable 
+\begin_inset Formula $w=\exp\left(-\lambda t\right)u$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $u=\exp\left(\lambda t\right)w$
+\end_inset
+
+ and
+\begin_inset Formula 
+\[
+\exp\left(\lambda t\right)w_{t}+\lambda\exp\left(\lambda t\right)w+\exp\left(\lambda t\right)V\cdot\nabla w=f,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+w_{t}+V\cdot\nabla w+\lambda w=\exp\left(-\lambda t\right)f.
+\]
+
+\end_inset
+
+Applying the 
+\begin_inset Formula $\theta$
+\end_inset
+
+-method to
+\begin_inset Formula 
+\[
+w_{t}=\exp\left(-\lambda t\right)f-V\cdot\nabla w-\lambda w
+\]
+
+\end_inset
+
+we have
+\begin_inset Formula 
+\begin{align*}
+\frac{w_{j+1}-w_{j}}{\Delta t} & =\theta\exp\left(-\lambda t_{j+1}\right)f_{j+1}+\left(1-\theta\right)\exp\left(-\lambda t_{j}\right)f_{j}\\
+ & \quad-\theta V\cdot\nabla w_{j+1}-\left(1-\theta\right)V\cdot\nabla w_{j}\\
+ & \quad-\theta\lambda w_{j+1}-\left(1-\theta\right)\lambda w_{j}
+\end{align*}
+
+\end_inset
+
+that is
+\begin_inset Formula 
+\begin{align*}
+0= & w_{j+1}-w_{j}\\
+ & -\Delta t\theta\exp\left(-\lambda t_{j+1}\right)f_{j+1}-\Delta t\left(1-\theta\right)\exp\left(-\lambda t_{j}\right)f_{j}\\
+ & +\Delta t\theta V\cdot\nabla w_{j+1}+\Delta t\left(1-\theta\right)V\cdot\nabla w_{j}\\
+ & +\Delta t\theta\lambda w_{j+1}+\Delta t\left(1-\theta\right)\lambda w_{j}
+\end{align*}
+
+\end_inset
+
+If 
+\begin_inset Formula $\theta=0$
+\end_inset
+
+, then
+\begin_inset Formula 
+\[
+w_{j+1}=w_{j}\left(1-\Delta t\lambda\right)+\Delta t\exp\left(-\lambda t_{j}\right)f_{j}-\Delta tV\cdot\nabla w_{j}.
+\]
+
+\end_inset
+
+If 
+\begin_inset Formula $\theta=1$
+\end_inset
+
+, then
+\begin_inset Formula 
+\[
+w_{j+1}\left(1+\Delta t\lambda\right)+\Delta tV\cdot\nabla w_{j+1}=w_{j}+\Delta t\exp\left(-\lambda t_{j+1}\right)f_{j+1}.
+\]
+
+\end_inset
+
+If 
+\begin_inset Formula $\theta=\frac{1}{2}$
+\end_inset
+
+, then
+\begin_inset Formula 
+\[
+w_{j+1}\left(1+\frac{\Delta t}{2}\lambda\right)+\frac{\Delta t}{2}V\cdot\nabla w_{j+1}=w_{j}\left(1-\frac{\Delta t}{2}\lambda\right)-\frac{\Delta t}{2}V\cdot\nabla w_{j}+\frac{\Delta t}{2}\left(\exp\left(-\lambda t_{j+1}\right)f_{j+1}+\exp\left(-\lambda t_{j}\right)f_{j}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
