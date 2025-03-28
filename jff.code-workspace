@@ -20,7 +20,8 @@
 		"editor.minimap.enabled": false,
 		"cSpell.words": [
 			"mathbb",
-			"mathcal"
+			"mathcal",
+			"Galerkin"
 		]
 	}
 }
