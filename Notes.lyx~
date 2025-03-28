@@ -96,10 +96,70 @@
 Just for fun
 \end_layout
 
+\begin_layout Standard
+Hola ChatGPT, me gustaria resolver la ecuacion de transporte
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial u}{\partial t}\left(t,x\right)+\theta\left(x\right)\cdot\nabla_{x}u\left(t,x\right)=0
+\]
+
+\end_inset
+
+en FenicsX, usando Discontinuous Galerkin methods.
+ La forma variacional de esta ecuacion es:
+\begin_inset Formula 
+\[
+\int_{\Omega}\frac{\partial u}{\partial t}v\,\mathrm{d}x+\int_{\Omega}\theta\cdot\nabla_{x}uv\,\mathrm{d}x-\int_{\Gamma_{in}}\left(\theta\cdot n\right)uv\,\text{d}s=-\int_{\Gamma_{in}}\left(\theta\cdot n\right)u_{\text{in}}v\,\text{d}s
+\]
+
+\end_inset
+
+Aqui 
+\begin_inset Formula $u_{\text{in}}$
+\end_inset
+
+ is el flujo entrante, y es dado.
+ 
+\begin_inset Formula $\Gamma_{in}$
+\end_inset
+
+ es la parte por donde entra el flujo.
+ Aqui la condicion de frontera esta impuesta debilmente.
+ Luego, estoy usando el método de Crank-Nicolson para discretizar la derivada
+ temporal.
+ Lo que tengo en este momento es
+\begin_inset Formula 
+\begin{align*}
+ & \int_{\Omega}\left(u^{n+1}+\left(\frac{dt}{2}\right)\theta\cdot\nabla u^{n+1}\right)v\mathrm{d}x-\left(\frac{dt}{2}\right)\int_{\Gamma_{in}}\left(\theta\cdot n\right)u^{n+1}v\,\text{d}s\\
+ & =\int_{\Omega}\left(u^{n}-\left(\frac{dt}{2}\right)\theta\cdot\nabla u^{n}\right)v\mathrm{d}x+\left(\frac{dt}{2}\right)\int_{\Gamma_{in}}\left(\theta\cdot n\right)u^{n}v\,\text{d}s-dt\int_{\Gamma_{in}}\left(\theta\cdot n\right)u_{\text{in}}v\,\text{d}s
+\end{align*}
+
+\end_inset
+
+Claro, 
+\begin_inset Formula $u^{0}$
+\end_inset
+
+ es la condicion inicial.
+ Ahora quisiera agregar un termino estabilizador, especificamente el termino
+ dado en la ecuacion 3.5 del articulo que te voy a pasar.
+ Luego, me gustaria resolver este problema en fenicsx.
+ Podrias ayudarme? Me gustaria que puedas mostrarme como se escribiria la
+ formulacion que vamos a resolver en cada iteracion (me refiero a la forma
+ variacional que resolveremos).
+ Luego, podrias explicarme como resolver iterativamente en un ejemplo simple.
+ Mi principal deificultad es que no se como escribir correctamente la formulacio
+n variacional usando discontinuous galerkin.
+ Resolver iterativamente lo podria hacer.
+\end_layout
+
 \begin_layout Section*
 
 \family typewriter
-eit_continuous
+eit_continuous_md
 \end_layout
 
 \begin_layout Standard
